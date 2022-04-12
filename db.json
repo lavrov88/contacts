@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$x1LtRTsDt/OZ8PLj2VwUneAr5lcYrmwUOdElrwSa7zNGAtP4R66q.",
+      "id": 1
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "name": "James",
+      "surname": "Brown"
+    },
+    {
+      "id": 2,
+      "name": "Jim",
+      "surname": "Morrison"
+    }
+  ]
+}
