@@ -1,56 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+import { Col, Layout, Row } from 'antd';
+import HeaderComponent from './components/Header/Header';
+import LoginComponent from './components/Login/Login';
+import ContactList from './components/ContactsList/ContactList';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './redux/reducers';
+const { Header, Content } = Layout;
 
 function App() {
+  const { app, contacts } = useSelector((state: RootState) => {
+    return {
+      app: state.app,
+      contacts: state.contacts
+    }
+  })
+  const dispatch = useDispatch()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <Layout>
+        <Header>
+          <Row>
+            <Col span={24}>
+              <HeaderComponent app={app} dispatch={dispatch} />
+            </Col>
+          </Row>
+        </Header>
+        <Content>
+          <Row>
+            <Col span={24}>
+              {!app.isLogged && <LoginComponent app={app} dispatch={dispatch} /> }
+              {app.isLogged && <ContactList app={app} contacts={contacts} dispatch={dispatch}  />}
+            </Col>
+          </Row>
+        </Content>
+      </Layout>
     </div>
   );
 }

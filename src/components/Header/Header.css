@@ -1,0 +1,13 @@
+.header_title .ant-typography {
+  color: #fff;
+}
+
+.header {
+  position: relative;
+}
+
+.header_logout {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
