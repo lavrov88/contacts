@@ -1,17 +1,24 @@
 {
   "users": [
     {
-      "email": "123@1.ru",
-      "password": "$2a$10$wOpMUKDFkPhc0MABxZWWsORIXzT9aSf0MzDKrcSs028KvguswZZh2",
+      "email": "olivier@mail.com",
+      "password": "$2a$10$x1LtRTsDt/OZ8PLj2VwUneAr5lcYrmwUOdElrwSa7zNGAtP4R66q.",
       "id": 1
     }
   ],
   "contacts": [
     {
+      "id": 1,
+      "name": "Bruce",
+      "surname": "Lee",
+      "email": "br@l.com",
+      "tel": "+79035551122"
+    },
+    {
       "id": 2,
       "name": "Bruce",
-      "surname": "Lee222",
-      "email": "BRUUUCE@l.com",
+      "surname": "Lee2",
+      "email": "br@l.com",
       "tel": "+79035551122"
     },
     {
@@ -36,6 +43,13 @@
       "tel": "+79035551122"
     },
     {
+      "id": 6,
+      "name": "Bruce",
+      "surname": "Lee6",
+      "email": "br@l.com",
+      "tel": "+79035551122"
+    },
+    {
       "id": 7,
       "name": "Bruce",
       "surname": "Lee7",
@@ -48,25 +62,6 @@
       "surname": "Lee8",
       "email": "br@l.com",
       "tel": "+79035551122"
-    },
-    {
-      "name": "Bruuuce",
-      "surname": "Willis",
-      "id": 9
-    },
-    {
-      "name": "Bruce",
-      "surname": "Lee6666",
-      "tel": "2143254363",
-      "email": "",
-      "id": 10
-    },
-    {
-      "name": "Sylvestr",
-      "surname": "Stallone",
-      "tel": "2342534",
-      "email": "s@st.com",
-      "id": 11
     }
   ]
 }

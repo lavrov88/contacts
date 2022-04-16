@@ -1,0 +1,9 @@
+.contact_edit_modal_form {
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.contact_edit_modal_form > input,
+.contact_edit_modal_form .ant-input-group-wrapper {
+  margin-bottom: 20px;
+}

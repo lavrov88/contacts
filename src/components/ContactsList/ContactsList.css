@@ -1,0 +1,18 @@
+.contacts_list_wrapper {
+  padding: 30px 50px;
+}
+
+.contacts_list,
+.search_and_add_toolbar {
+  max-width: 650px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.contacts_list .ant-list-item {
+  padding: 20px 20px 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+
+  background-color: #fff;
+}

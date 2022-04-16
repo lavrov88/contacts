@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.header h1 {
+  transform: translateY(5px);
+}
+
 .header_logout {
   position: absolute;
   right: 0;

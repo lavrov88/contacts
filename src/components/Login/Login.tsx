@@ -54,9 +54,9 @@ const LoginComponent = ({ app, dispatch }: LoginComponentProps) => {
             </Button>
           </Form.Item>
         </Form>
-        {app.wrongUsernameOrPassword &&
+        {app.loginErrorMessage.show &&
           <Alert
-            message="Неправильное имя пользователя или пароль!"
+            message={app.loginErrorMessage.message}
             type="error"
             showIcon
             closable

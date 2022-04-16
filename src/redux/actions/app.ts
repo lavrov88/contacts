@@ -29,17 +29,29 @@ export const showWrongUsernameOrPassword = (value: boolean) => ({
   payload: value
 })
 
+export const showLoginError = (show: boolean, message: string = '') => ({
+  type: 'SHOW_LOGIN_ERROR',
+  payload: { show, message }
+})
+
 export const loginThunk = (username: string, password: string): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     dispatch(setLoginInProgress(true))
-    dispatch(showWrongUsernameOrPassword(false))
+    dispatch(showLoginError(false))
     dispatch(setInputsValues(username, password))
     const result = await loginAPI.login(username, password)
-    console.dir(result)
-    if (result) {
-      dispatch(loginSucceed(result))
+    // console.dir(result)
+    if (result.isSucceed) {
+      dispatch(loginSucceed(result.token))
     } else {
-      dispatch(showWrongUsernameOrPassword(true))
+      if (result.error === 'Network Error') {
+        dispatch(showLoginError(true, 'Сервер не отвечает, возможно он не запущен...'))
+      } else if (result.error === 'Request failed with status code 400') {
+        dispatch(showLoginError(true, 'Неправильное имя пользователя или пароль!'))
+      } else {
+        console.log('unidentified server problem...')
+        console.error(result.error)
+      }
     }
     dispatch(setLoginInProgress(false))
   }

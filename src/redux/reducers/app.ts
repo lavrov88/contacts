@@ -4,10 +4,13 @@ import { AppState } from './../../types/reducers';
 const initialState: AppState = {
   isLogged: false,
   loggingInProgress: false,
-  wrongUsernameOrPassword: false,
+  loginErrorMessage: {
+    show: false,
+    message: ''
+  },
   previousUsername: null,
   previousPassword: null,
-  token: null
+  token: ''
 }
 
 const appReducer = (state = initialState, action: AppActions): AppState => {
@@ -25,7 +28,7 @@ const appReducer = (state = initialState, action: AppActions): AppState => {
         ...state,
         isLogged: false,
         loggingInProgress: false,
-        token: null,
+        token: '',
       }
 
     case 'SET_INPUTS_VALUES':
@@ -41,10 +44,14 @@ const appReducer = (state = initialState, action: AppActions): AppState => {
         loggingInProgress: action.payload,
       }
     
-    case 'SHOW_WRONG_USERNAME_OR_PASSWORD':
+    case 'SHOW_LOGIN_ERROR':
       return {
         ...state,
-        wrongUsernameOrPassword: action.payload
+        loginErrorMessage: {
+          ...state.loginErrorMessage,
+          show: action.payload.show,
+          message: action.payload.message
+        }
       }
   
     default:

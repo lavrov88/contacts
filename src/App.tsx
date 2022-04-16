@@ -3,7 +3,7 @@ import './App.css';
 import { Col, Layout, Row } from 'antd';
 import HeaderComponent from './components/Header/Header';
 import LoginComponent from './components/Login/Login';
-import ContactList from './components/ContactsList/ContactList';
+import ContactList from './components/ContactsList/ContactsList';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/reducers';
 const { Header, Content } = Layout;
