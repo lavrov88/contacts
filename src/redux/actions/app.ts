@@ -1,13 +1,13 @@
 import { loginAPI } from './../../api/api';
-import { AnyAction, ThunkAction } from "@reduxjs/toolkit"
-import { RootState } from "../reducers"
+import { Dispatch } from "@reduxjs/toolkit"
+import { errorHandler } from '../../components/common/tools';
 
-export const loginSucceed = (token: string) => ({
+export const setLoggedIn = (token: string) => ({
   type: 'SET_LOG_IN',
   payload: token
 })
 
-export const logoutSucceed = () => ({
+export const setLoggedOut = () => ({
   type: 'SET_LOG_OUT'
 })
 
@@ -34,25 +34,15 @@ export const showLoginError = (show: boolean, message: string = '') => ({
   payload: { show, message }
 })
 
-export const loginThunk = (username: string, password: string): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async (dispatch) => {
+export const loginThunk = (username: string, password: string) => {
+  return async (dispatch: Dispatch) => {
     dispatch(setLoginInProgress(true))
     dispatch(showLoginError(false))
     dispatch(setInputsValues(username, password))
+
     const result = await loginAPI.login(username, password)
-    // console.dir(result)
-    if (result.isSucceed) {
-      dispatch(loginSucceed(result.token))
-    } else {
-      if (result.error === 'Network Error') {
-        dispatch(showLoginError(true, 'Сервер не отвечает, возможно он не запущен...'))
-      } else if (result.error === 'Request failed with status code 400') {
-        dispatch(showLoginError(true, 'Неправильное имя пользователя или пароль!'))
-      } else {
-        console.log('unidentified server problem...')
-        console.error(result.error)
-      }
-    }
+    errorHandler(result, dispatch, () => dispatch(setLoggedIn(result.token)))
+
     dispatch(setLoginInProgress(false))
   }
 }

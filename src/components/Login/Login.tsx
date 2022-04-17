@@ -8,14 +8,10 @@ import { LoginFormValues } from "../../types/other";
 const LoginComponent = ({ app, dispatch }: LoginComponentProps) => {
 
   const onFinish = async (values: LoginFormValues) => {
-    // console.log('Success:', values);
+
     const { username, password } = values
     dispatch(loginThunk(username, password))
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
+  }
 
   return (
     <div className="login_wrapper">
@@ -24,8 +20,9 @@ const LoginComponent = ({ app, dispatch }: LoginComponentProps) => {
           name="basic"
           initialValues={{ username: app.previousUsername, password: app.previousPassword }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="off"
+          labelCol={{span: 8}}
+          wrapperCol={{span: 16}}
           requiredMark={false}
         >
           <Form.Item
@@ -44,7 +41,7 @@ const LoginComponent = ({ app, dispatch }: LoginComponentProps) => {
             <Input.Password />
           </Form.Item>
 
-          <Form.Item>
+          <Form.Item wrapperCol={{span: 8, offset: 6}} >
             <Button 
               type="primary" 
               htmlType="submit"

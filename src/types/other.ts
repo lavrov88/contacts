@@ -9,3 +9,13 @@ export type EditContactFormValues = {
   tel: string
   email: string
 }
+
+export type APIResponseType = {
+  isSucceed: boolean;
+  token: string;
+  error: null;
+} | {
+  isSucceed: boolean;
+  token: null;
+  error: string;
+}

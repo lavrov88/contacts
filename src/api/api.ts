@@ -1,11 +1,17 @@
 import axios, { AxiosError } from "axios";
 import { ContactItemType } from "../types/actions";
 
-const delay = (ms: number) => new Promise(r => setTimeout(r, ms))
+const delay = () => new Promise(r => setTimeout(r, 500))
+
+const errorCatcher = (e: AxiosError, message: string = 'An error occurred during the request') => {
+  console.log(message)
+  console.log((e as AxiosError).message)
+  return (e as AxiosError).message
+}
 
 export const loginAPI = {
   async login(username: string, password: string) {
-    await delay(500) // delay 0.5 sec
+    await delay() // delay 0.5 sec
     try {
       const response = await axios.post('http://localhost:3001/login', {
         email: username,
@@ -28,6 +34,20 @@ export const loginAPI = {
   }
 }
 
+const headersTypes = {
+  getAndDelete(token: string) {
+    return {
+      Authorization: `Bearer ${token}`
+    }
+  },
+  patchAndPost(token: string) {
+    return {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    }
+  }
+}
+
 export const contactsAPI = {
   async getContacts(token: string, searchValue: string) {
 
@@ -36,44 +56,33 @@ export const contactsAPI = {
       urlSearchQuery = `?q=${searchValue}`
     }
 
-    await delay(500) // delay 0.5 sec
+    await delay()
     try {
       const response = await axios.get('http://localhost:3001/contacts' + urlSearchQuery, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+        headers: headersTypes.getAndDelete(token)
       })
       return response.data
     } catch(e) {
-      console.log('error has occurred during contacts fetching!')
-      console.log((e as AxiosError).message)
-      return (e as AxiosError).message
+      return errorCatcher(e as AxiosError, 'An error occured during fetching contacts')
     }
   },
 
   async deleteContact(token: string, id: number) {
-    await delay(500) // delay 0.5 sec
+    await delay()
     try {
       const response = await axios.delete('http://localhost:3001/contacts/' + id, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+        headers: headersTypes.getAndDelete(token)
       })
       return response.data
     } catch(e) {
-      console.log('error has occurred during contacts fetching!')
-      console.log((e as AxiosError).message)
-      return (e as AxiosError).message
+      return errorCatcher(e as AxiosError, 'An error occured during deleting the contact')
     }
   },
 
   async editContact(token: string, contact: ContactItemType) {
 
     const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      }
+      headers: headersTypes.patchAndPost(token)
     }
     const data = {
       name: contact.name,
@@ -82,24 +91,19 @@ export const contactsAPI = {
       email: contact.email
     }
 
-    await delay(500) // delay 0.5 sec
+    await delay()
     try {
       const response = await axios.patch('http://localhost:3001/contacts/' + contact.id, data, config)
       return response.data
     } catch (e) {
-      console.log('error has occurred during contacts fetching!')
-      console.log((e as AxiosError).message)
-      return (e as AxiosError).message
+      return errorCatcher(e as AxiosError, 'An error occured during saving the contact')
     }
   },
 
   async createNewContact(token: string, contact: ContactItemType) {
     
     const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      }
+      headers: headersTypes.patchAndPost(token)
     }
     const data = {
       name: contact.name,
@@ -108,14 +112,12 @@ export const contactsAPI = {
       email: contact.email
     }
 
-    await delay(500) // delay 0.5 sec
+    await delay()
     try {
       const response = await axios.post('http://localhost:3001/contacts/', data, config)
       return response.data
     } catch (e) {
-      console.log('error has occurred during contacts fetching!')
-      console.log((e as AxiosError).message)
-      return (e as AxiosError).message
+      return errorCatcher(e as AxiosError, 'An error occured during saving new contact')
     }
   },
 }

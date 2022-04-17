@@ -24,7 +24,8 @@ const contactsReducer = (state = initialState, action: ContactsActions) => {
         ...state,
         contacts: [
           ...action.payload
-        ].sort((a, b) => (a.name + a.surname) > (b.name + b.surname) ? 1 : -1) // alphabet sorting
+        ].sort((a, b) => (a.name.toLowerCase() + a.surname.toLowerCase()) > (b.name.toLowerCase() + b.surname.toLowerCase()) ? 1 : -1)
+        // alphabet sorting
       }
 
     case 'SET_IS_FETCHING':

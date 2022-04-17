@@ -2,7 +2,7 @@
 // APP ACTIONS
 
 export type AppActions = LoginSucceedType 
-                       | LogoutSucceedType 
+                       | SetLogoutType 
                        | SetInputsValues
                        | LoginInProgress 
                        | ShowWrongUsernameOrPassword
@@ -13,7 +13,7 @@ type LoginSucceedType = {
   payload: string
 }
 
-type LogoutSucceedType = {
+type SetLogoutType = {
   type: 'SET_LOG_OUT'
 }
 

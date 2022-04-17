@@ -5,10 +5,10 @@ import { EditContactFormValues } from "../../../types/other";
 import { ContactEditModalProps } from "../../../types/props";
 import "./ContactEditModal.css"
 
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
-}
+// const layout = {
+//   labelCol: { span: 8 },
+//   wrapperCol: { span: 16 },
+// }
 
 const ContactEditModal = ({ contacts, dispatch }: ContactEditModalProps) => {
   const contact = contacts.editContactModal.data
@@ -43,7 +43,6 @@ const ContactEditModal = ({ contacts, dispatch }: ContactEditModalProps) => {
       visible={contacts.editContactModal.isOpen}
       onOk={() => contactEditForm.submit()}
       onCancel={() => dispatch(closeContactEditModal())}
-      // maskTransitionName="" // probably fixes modal close animation
       cancelText="Отменить"
       okText="Сохранить"
       getContainer={false} //  fixes modal close animation
@@ -52,7 +51,9 @@ const ContactEditModal = ({ contacts, dispatch }: ContactEditModalProps) => {
 
       <div className="contact_edit_modal_form">
         <Form
-          {...layout}
+          // {...layout}
+          labelCol={{span: 6}}
+          wrapperCol={{span: 18}}
           form={contactEditForm}
           name="contact-edit-form"
           onFinish={onFinish}

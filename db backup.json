@@ -1,67 +1,66 @@
 {
   "users": [
     {
-      "email": "olivier@mail.com",
-      "password": "$2a$10$x1LtRTsDt/OZ8PLj2VwUneAr5lcYrmwUOdElrwSa7zNGAtP4R66q.",
+      "email": "test@login.ru",
+      "password": "$2a$10$1UWOC15sU14.pTmuB7LfKeN7B4blqHRrVPZmwx0fYSZR4/X/hjy/q",
       "id": 1
     }
   ],
   "contacts": [
     {
       "id": 1,
-      "name": "Bruce",
-      "surname": "Lee",
-      "email": "br@l.com",
+      "name": "Брюс",
+      "surname": "Уиллис",
+      "email": "bruce@willis.com",
       "tel": "+79035551122"
     },
     {
       "id": 2,
-      "name": "Bruce",
-      "surname": "Lee2",
-      "email": "br@l.com",
-      "tel": "+79035551122"
+      "name": "Сильвестр",
+      "surname": "Сталлоне",
+      "email": "sylvester@gmail.com",
+      "tel": "+79168542954"
     },
     {
       "id": 3,
-      "name": "Bruce",
-      "surname": "Lee3",
-      "email": "br@l.com",
-      "tel": "+79035551122"
+      "name": "Джейсон",
+      "surname": "Стэтхэм",
+      "email": "statham@mail.ru",
+      "tel": "+79268889977"
     },
     {
       "id": 4,
-      "name": "Bruce",
-      "surname": "Lee4",
-      "email": "br@l.com",
-      "tel": "+79035551122"
+      "name": "Чак",
+      "surname": "Норрис",
+      "email": "chuck@norr.is",
+      "tel": "+79010000001"
     },
     {
       "id": 5,
-      "name": "Bruce",
-      "surname": "Lee5",
-      "email": "br@l.com",
-      "tel": "+79035551122"
+      "name": "Арнольд",
+      "surname": "Шварценеггер",
+      "email": "arny@yahoo.com",
+      "tel": "+79154325555"
     },
     {
-      "id": 6,
-      "name": "Bruce",
-      "surname": "Lee6",
-      "email": "br@l.com",
-      "tel": "+79035551122"
+      "name": "Жан Клод",
+      "surname": "Ван Дамм",
+      "email": "jcvd@gmail.com",
+      "id": 6
     },
     {
-      "id": 7,
-      "name": "Bruce",
-      "surname": "Lee7",
-      "email": "br@l.com",
-      "tel": "+79035551122"
+      "name": "Бенедикт ",
+      "surname": "Камбербэтч",
+      "tel": "+79018419358",
+      "email": "brandenburg@cybertruck.com",
+      "id": 7
     },
     {
-      "id": 8,
-      "name": "Bruce",
-      "surname": "Lee8",
-      "email": "br@l.com",
-      "tel": "+79035551122"
+      "name": "Киану",
+      "surname": "Ривз",
+      "tel": "+74952323232",
+      "email": "keanu@gmail.com",
+      "id": 8
     }
   ]
 }
