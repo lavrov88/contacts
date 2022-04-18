@@ -55,8 +55,8 @@ const ContactDescriptionItem = ({ name, surname, tel, email }: ContactDescriptio
     <Descriptions size={"small"} column={2} >
       <Descriptions.Item label="Имя">{name}</Descriptions.Item>
       <Descriptions.Item label="Фамилия">{surname}</Descriptions.Item>
-      <Descriptions.Item label="Телефон">{tel}</Descriptions.Item>
-      <Descriptions.Item label="Email">{email}</Descriptions.Item>
+      {tel && <Descriptions.Item label="Телефон">{tel}</Descriptions.Item>}
+      {email && <Descriptions.Item label="Email">{email}</Descriptions.Item>}
     </Descriptions>
   )
 }

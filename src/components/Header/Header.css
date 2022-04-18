@@ -4,6 +4,8 @@
 
 .header {
   position: relative;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
 .header h1 {
