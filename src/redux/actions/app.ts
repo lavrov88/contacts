@@ -41,7 +41,7 @@ export const loginThunk = (username: string, password: string) => {
     dispatch(setInputsValues(username, password))
 
     const result = await loginAPI.login(username, password)
-    errorHandler(result, dispatch, () => dispatch(setLoggedIn(result.token)))
+    errorHandler(result, dispatch, () => dispatch(setLoggedIn(result)))
 
     dispatch(setLoginInProgress(false))
   }

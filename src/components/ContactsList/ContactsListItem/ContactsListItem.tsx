@@ -51,8 +51,9 @@ const ContactTitleItem = ({ name, surname, dispatch, id }: ContactTitleItemType)
 }
 
 const ContactDescriptionItem = ({ name, surname, tel, email }: ContactDescriptionItemType) => {
+  const screenWidth = document.documentElement.clientWidth
   return (
-    <Descriptions size={"small"} column={2} >
+    <Descriptions size={"small"} column={screenWidth > 480 ? 2 : 1} >
       <Descriptions.Item label="Имя">{name}</Descriptions.Item>
       <Descriptions.Item label="Фамилия">{surname}</Descriptions.Item>
       {tel && <Descriptions.Item label="Телефон">{tel}</Descriptions.Item>}

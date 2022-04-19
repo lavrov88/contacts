@@ -17,19 +17,9 @@ export const loginAPI = {
         email: username,
         password: password
       })
-      const result = {
-        isSucceed: true,
-        token: response.data.accessToken,
-        error: null
-      }
-      return result
+      return response.data.accessToken as string
     } catch (e) {
-      const result = {
-        isSucceed: false,
-        token: null,
-        error: (e as AxiosError).message
-      }
-      return result
+      return (e as AxiosError).message
     }
   }
 }

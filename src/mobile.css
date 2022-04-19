@@ -88,8 +88,17 @@
     font-size: 11px;
   }
 
-  .ant-list-item-meta-description span {
-    font-size: 11px;
+  .ant-descriptions-item-container {
+    justify-content: center;
+  }
+
+  .ant-descriptions-item-label {
+    width: 50%;
+    justify-content: flex-end;
+  }
+
+  .ant-descriptions-item-content {
+    width: 50%;
   }
 
   .login_form {
