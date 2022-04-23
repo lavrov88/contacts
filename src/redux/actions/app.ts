@@ -1,6 +1,7 @@
 import { loginAPI } from './../../api/api';
-import { Dispatch } from "@reduxjs/toolkit"
+import { AnyAction, Dispatch, ThunkAction } from "@reduxjs/toolkit"
 import { errorHandler } from '../../components/common/tools';
+import { RootState } from '../reducers';
 
 export const setLoggedIn = (token: string) => ({
   type: 'SET_LOG_IN',
@@ -34,7 +35,7 @@ export const showLoginError = (show: boolean, message: string = '') => ({
   payload: { show, message }
 })
 
-export const loginThunk = (username: string, password: string) => {
+export const loginThunk = (username: string, password: string): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch: Dispatch) => {
     dispatch(setLoginInProgress(true))
     dispatch(showLoginError(false))
